@@ -1,0 +1,22 @@
+/**
+* Default SCSS
+* @version v1.0.0
+* @author Junghoon Lee
+**/
+$siteUrl: ''; // 사이트 url
+
+$mobile: 767px; // 모바일 해상도 breakpoint
+$tablet: 1024px; // 태블릿 해상도 breakpoint
+$pc: 1025px; // pc 해상도 그리드 사이즈
+
+$fontFamily: 'notokr', 'Noto Sans KR', 'Nanum Gothic', 'Malgun Gothic', sans-serif; // 본문 폰트 모양
+$fontSize: 13px; // 본문 폰트 사이즈
+$lineHeight: 1.5; // 본문 line-height
+$textColor: #000; // 본문 텍스트 컬러
+
+$naver : rgba(3,207,93,1);
+$facebook : rgba(59,87,157,1);
+$kakao : rgba(255,205,0,1);
+
+$whi: #fff;
+$bla: #000;

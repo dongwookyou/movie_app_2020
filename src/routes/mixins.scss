@@ -1,0 +1,118 @@
+/**
+* Default SCSS
+* @version v1.0.0
+* @author Junghoon Lee
+**/
+
+// media query(device)
+@mixin -small {
+  @media screen and (max-width: $mobile) { @content; }
+}
+@mixin small- {
+  @media screen and (min-width: $mobile + 1) { @content; }
+}
+@mixin small-medium {
+  @media screen and (min-width: $mobile + 1) and (max-width: $tablet) { @content; }
+}
+@mixin -medium {
+  @media screen and (max-width: $tablet) { @content; }
+}
+@mixin medium- {
+  @media screen and (min-width: $tablet + 1) { @content; }
+}
+@mixin medium-large {
+  @media screen and (min-width: $tablet + 1) and (max-width: $pc) { @content; }
+}
+@mixin -large {
+  @media screen and (max-width: $pc) { @content; }
+}
+@mixin large- {
+  @media screen and (min-width: $pc + 1) { @content; }
+}
+
+// background image
+@mixin bgi($url, $name, $type, $size: cover) {
+  background: {
+    repeat: no-repeat; position: center; size: $size; image: #{ 'url(' + $url + $name + $type + ')' };
+  }
+}
+
+// setting 01
+@mixin vendorPrefix($property, $value) {
+  @each $prefix in -webkit-, -moz-, -ms-, -o-, '' {
+    #{$prefix}#{$property}: $value;
+  }
+}
+
+// vhcenter
+@mixin center($direction: vh) {
+  position: absolute;
+  @if $direction == v {
+    top: 50%; transform: translateY(-50%);
+  } @else if $direction == h {
+    left: 50%; transform: translateX(-50%);
+  } @else {
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+}
+
+// clear
+@mixin clear($direction) {
+  &:after{content: ''; display: block; clear: both;}
+  > * {
+    float: $direction;
+    &.slash {
+      @if $direction == right {
+        &:first-child {
+          padding-right: 0;
+          &:after {display: none;}
+        }
+      } @else {
+        &:last-child {
+          padding-right: 0;
+          &:after {display: none;}
+        }
+      }
+    }
+  }
+}
+
+// list col
+@mixin justify($n, $gutter) {
+  > * {
+    @if $gutter == 0 {
+      width: #{floor(100/$n) + '%'};
+    } @else {
+      // width: calc((100% - #{$gutter} * #{$n - 1}) / #{$n});
+      width: calc((100% / #{$n}) - #{ceil(($gutter * ($n - 1)) / $n)});
+      // margin-right: $gutter;
+      @for $i from 1 through $n * 40 {
+        &:nth-child(#{$i}) { margin-right: $gutter; }
+      }
+    }
+    @for $i from 1 through $n * 40 {
+      &:nth-child(#{$n * $i}) { margin-right: 0; }
+    }
+  }
+  @include clear(left);
+}
+
+// text ellipse
+@mixin ellipse($lines: 1, $height: $lineHeight) {
+  text-overflow: ellipsis; overflow: hidden;
+  @if $lines == 1 {
+    white-space: nowrap; word-wrap: normal; width: 100%;
+  } @else {
+    word-wrap: break-word; display: -webkit-box; -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines; height: $lines * $height; line-height: $height;
+  }
+}
+
+// dot icon
+@mixin dot($cont, $addBlock, $fSize) {
+  content: $cont;
+  display: $addBlock;
+  position: absolute;
+  left: 0;
+  font-size: $fSize;
+}

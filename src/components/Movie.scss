@@ -1,0 +1,257 @@
+.movies .movie {
+  position:relative;
+  width: 100%;
+  margin-bottom:12px;
+  box-shadow:0 6px 8px rgba(0, 0, 0, .5);
+}
+
+.movies .movie a{
+  display:block;
+}
+
+.main_title{
+  text-align: center;
+  font-size:24px;
+  line-height:1;
+  margin:40px 0 15px;
+  letter-spacing:-.4px;
+}
+
+.movie img {
+  position: relative;    
+  width:100%;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+.movie .movie_title,
+.movie .movie_year {
+  margin: 0;
+  font-weight: 300;
+}
+
+.movie .movie_title {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #fff;
+  font-weight:600;
+}
+
+.movie .movie_title span{
+  width:30px;
+  height:30px;
+  line-height:30px;
+  font-size:12px;
+  color:#fff;
+  background-color:#251f20;
+  border-radius:50%;
+  display:inline-block;
+  text-align:center;
+  margin-right:8px;
+}
+
+.movie .movie_genres {
+  list-style: none;
+  padding: 0;
+  margin: 0
+}
+.movie .genres_genre{    
+  color:#fff;
+}
+
+.movie .movie_year {  
+  font-size:12px;
+  color:#fff;
+  font-weight:600;
+}
+
+.movie_summary{
+  font-size:14px;
+  color:#fff;  
+}
+
+.movie_box{
+  position:absolute;
+  padding:12px;
+  left:0;
+  width:100%;
+  bottom:0;
+  text-align:right;
+}
+
+.movie_data{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:10;
+  background:rgba(0, 0, 0, .3);
+  padding:12px;
+}
+
+//Detail
+.detail_cont{
+  width:100%;
+  max-width:750px;
+  padding:0 20px;
+  margin:35px auto 0;  
+  padding:0 20px 100px;
+}
+.detail_cont h3{
+  font-size:24px;
+  text-align:center;
+  line-height:30px;
+  margin:10px 0 20px;
+  letter-spacing:-1px;
+}
+.detail_cont span{
+  display:block;
+  font-size:15px;
+  line-height:20px;
+  text-align:center;
+  text-decoration:underline;
+}
+.detail_cont ul{
+  border-top:2px solid #ddd;
+  border-bottom:1px solid #eee;
+  padding:5px 0;
+  margin-bottom:18px;
+}
+.detail_cont ul li{
+  float: left;
+  padding:0 4px;
+  color:#de6f47;
+  position:relative;
+  font-size:12px;
+  line-height:18px;  
+}
+
+.detail_cont ul li::before{
+  content:'·';
+  font-size:12px;
+  color:#de6f47;
+  line-height:18px;
+  width:10px;
+  display:inline-block;
+  font-weight:600;
+  text-align:center;
+}
+.detail_cont p{
+  font-size:16px;
+  line-height:24px;
+  margin-top:20px;
+  letter-spacing:-.3px;
+}
+
+.detail_cont .back_btn{
+  display:inline-block;
+  position:fixed;
+  width:50px;
+  height:50px;
+  background:#000;
+  border-radius: 50%;
+  bottom:30px;
+  right:30px;
+  box-shadow:3px 3px 10px rgba(0, 0, 0, .6);
+  z-index:100;
+}
+
+.detail_cont .back_btn:after{
+  content:'';
+  position:absolute;
+  display:inline-block;
+  width: 12px;
+  height: 12px;
+  transform: rotate(-135deg);
+  border-top: 3px solid #fff;
+  border-right: 3px solid #fff;
+  top:50%;
+  left:50%;
+  margin:-8px 0 0 -5px;  
+}
+
+.img_box{
+  position:relative;
+}
+.img_box i{
+  width:100%;
+  height:100px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background:linear-gradient(0deg, #000, transparent)
+}
+
+.img_box em{
+  width:40px;
+  height:40px;
+  line-height:36px;
+  font-size:15px;
+  color:#fff;
+  background:#de6f47;
+  border:2px solid #fff;
+  border-radius:50%;
+  display:inline-block;
+  text-align:center;
+  margin-right:8px;
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  z-index:10;
+}
+
+//dot-loading
+
+.loadingBar {
+  position: relative;
+  text-align:center;
+  padding:20px 0;  
+}
+
+.loadingBar.showing span{
+  display:inline-block;
+}
+
+.loadingBar span {
+  display:none;
+	position: relative;	
+	width: 10px;
+  height: 10px;
+  margin:0 3px;
+  will-change: transform;
+	&:before {
+		position: absolute;
+		display: block;
+		content: "";
+		width: 10px;
+		height: 10px;
+		border-radius: 100%;
+		background-color: rgba(0, 0, 0, .6);
+	}
+	&:first-child:before {
+		animation: bubble 1.2s infinite cubic-bezier(.455, .03, .515, .955);
+	}
+	&:nth-child(2):before {
+		animation: bubble 1.2s infinite cubic-bezier(.455, .03, .515, .955);
+		animation-delay: .2s;
+	}
+	&:last-child:before {
+		animation: bubble 1.2s infinite cubic-bezier(.455, .03, .515, .955);
+		animation-delay: .4s;
+	}
+}
+@keyframes bubble {
+	0% {
+		transform: scale(.2);
+		opacity: .1;
+	}
+	50% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(.2);
+		opacity: .1;
+	}
+}

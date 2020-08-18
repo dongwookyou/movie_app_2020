@@ -1,0 +1,181 @@
+@import './constant.scss';
+@import './default.scss';
+@import './mixins.scss';
+@import '../components/Movie.scss';
+
+* {@include vendorPrefix(box-sizing, border-box);}
+.cage {@include vendorPrefix(box-sizing, border-box);}
+.clear-left {@include clear(left);}
+.clear-right {@include clear(right);}
+.center {
+  &.vh, &.hv {@include center();};
+  &.v {@include center(v);}
+  &.h {@include center(h);}
+}
+.slash {
+  position: relative; padding-right: calc(1.5em);
+  &:after {
+    display: inline-block; content: '';
+    width: 1px; height: 0.9em; margin-right: 0.75em;
+    background-color: rgba(0,0,0,0.35);
+    @include center(v); right: 0;
+  }
+  &:last-child:after {display: none;}
+}
+.ellipsis-row {@include ellipse();}
+.ellipsis-many {@include ellipse(2);}
+
+img{width:100%;}
+
+body {
+  margin: 0;
+  padding: 0;  
+  height: 100%;
+}
+
+html,
+body,
+.container {
+  width:100%;
+  height: 100%;
+  position:relative;
+}
+
+.content{
+  animation: fadeIn 0.6s linear
+}
+
+.loader {
+  width: 100%;
+  height: 100vh;
+}
+
+.note_sec,
+.head_title,
+.visual,
+.movies {
+  width:100%;
+  max-width:750px;
+  padding:0 20px;
+  margin:0 auto;
+}
+
+.movies_content{
+  padding:0;
+  margin:0;
+}
+
+.note_sec p{
+  font-size:14px;
+  color:#000;
+  line-height:22px;
+  letter-spacing:-1px;
+}
+
+.head_title{
+  margin-bottom:10px;
+  }
+.left_item,
+.right_item{
+  width:50%;
+  display:inline-block;
+  vertical-align: top;
+  font-size:0;
+}
+.left_item h1{
+  font-size:32px;
+  color:#000;
+  line-height:40px;
+  letter-spacing:-1px;
+}
+.left_item span{
+  font-size:12px;
+  line-height:24px;
+  color:#000;
+  display:block;
+  letter-spacing:-1px;
+}
+
+.right_item {
+  text-align:right;
+}
+.right_item .datepicker{
+  font-size:18px;
+  line-height:64px;
+  font-weight:600;
+  margin:0 5px;
+  letter-spacing:-1px;
+}
+
+.right_item button{
+  display:inline-block;
+  width: 8px;
+  height: 8px;  
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+}
+
+.right_item button.pre_btn{
+  transform: rotate(-135deg);
+}
+.right_item button.next_btn{
+  transform: rotate(45deg);
+}
+
+.visual{
+  padding:0;
+  margin-top:35px;
+}
+
+
+$offset: 130;
+$duration: 1s;
+
+.spinner {
+  animation: rotator $duration linear infinite;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin:-25px 0 0 -25px
+}
+
+@keyframes rotator {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(270deg); }
+}
+
+.path {
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation:
+    dash $duration ease-in-out infinite, 
+    colors $duration ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {stroke:rgba(0, 0, 0, .8)}
+  50% {stroke:rgba(0, 0, 0, .5)}
+  100% {stroke:rgba(0, 0, 0, .8)}
+}
+
+@keyframes dash {
+ 0% { stroke-dashoffset: $offset; }
+ 50% {
+   stroke-dashoffset: $offset/4;
+   transform:rotate(135deg);
+ }
+ 100% {
+   stroke-dashoffset: $offset;
+   transform:rotate(450deg);
+ }
+}
+
+@keyframes fadeIn{
+  from{
+      opacity:0;
+  }
+  to{
+      opacity:1;
+  }
+}
